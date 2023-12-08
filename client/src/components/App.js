@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+//import { Switch, Route } from "react-router-dom";
+
+import Signup from './Signup';
 
 function App() {
-  return <h1>Project Client</h1>;
+  const [user, setUser] = useState(null)
+
+  if (!user) {
+    return <Signup setUser={setUser}/>;
+  }
+
+  return <div>
+    is the site
+  </div>
 }
 
 export default App;
