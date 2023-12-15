@@ -5,3 +5,12 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+.streamsImg {
+  max-width: 25%; 
+  height:auto
+}
+
+.animeImg {
+  max-width: 30%;
+  height: auto;
+}
