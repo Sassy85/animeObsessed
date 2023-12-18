@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from "react";
 import { Box, Button, Container, TextField} from '@mui/material'
+import { useOutletContext, useNavigate} from "react-router-dom";
 
-function AddAnime({onNewAnime}) {
+function AddAnime() {
+    const {onNewAnime} = useOutletContext()
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
     const [summary, setSummary] = useState("")
     const [numEpisodes, setNumEpisodes] = useState("")
     const [completed, setCompleted] = useState("")
     const [likes, setLikes] = useState("")
+    const navigate = useNavigate()
 
     function nameChange(event) {
         setName(event.target.value)
@@ -61,6 +64,7 @@ function AddAnime({onNewAnime}) {
             setNumEpisodes("")
             setCompleted("")
             setLikes("")
+            navigate("/animes")
         })
 
     }

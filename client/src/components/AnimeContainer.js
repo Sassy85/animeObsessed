@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import {Container} from "@mui/material"
+import { useOutletContext } from "react-router-dom";
 
 import AnimeCard from './AnimeCard'
 
-function AnimeContainer({animes, setAnimes, onRemoveAnime, onUpdateAnime}) {
+function AnimeContainer() {
+    const {animes, setAnimes, onRemoveAnime, onUpdateAnime} = useOutletContext()
+    
     useEffect(() => {
         fetch('/animes')
             .then((r) => {

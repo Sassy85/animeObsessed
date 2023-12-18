@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Button,} from '@mui/material'
-import { Switch, Route } from "react-router-dom";
+import {Outlet} from "react-router-dom";
 
 import AnimeConainter from './AnimeContainer'
 import Nav from './Nav'
@@ -61,17 +61,25 @@ function App() {
       })
     })
   }
+  const context = {
+    animes, 
+    setAnimes, 
+    onRemoveAnime, 
+    onUpdateAnime, 
+    onNewAnime
+  }
 
   return <div>
     <Nav/>
     
     <Button variant="contained" onClick={handleLogout}>Logout</Button>
 
-    <StreamContainer/>
+    {/* <StreamContainer/>
     
     <AnimeConainter animes={animes} setAnimes={setAnimes} onRemoveAnime={onRemoveAnime} onUpdateAnime={onUpdateAnime}/>
 
-    <AddAnime onNewAnime={onNewAnime}/>
+    <AddAnime onNewAnime={onNewAnime}/> */}
+    <Outlet context={context}/>
   </div>
 }
 

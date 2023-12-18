@@ -14,3 +14,17 @@
   max-width: 30%;
   height: auto;
 }
+
+.nav-link {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: .5rem;
+  padding: 5px;
+  text-decoration: none;
+  text-align: center;
+  font-size: min(10vw, 15px);
+}
+
+.active{
+  color: #138B83;
+}
