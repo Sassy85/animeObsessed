@@ -49,14 +49,6 @@ function App() {
     
     <Button variant="contained" onClick={handleLogout}>Logout</Button>
 
-    <img src='client/src/Images/Streaming.jpeg' alt='Streaming On'/>
-
-    <Button variant="contained">Streams</Button>
-
-    <img src='client/src/Images/Animes.jpg' alt='Animes'/>
-
-    <Button variant="contained">Animes</Button>
-
     <StreamContainer/>
     
     <AnimeConainter animes={animes} setAnimes={setAnimes}/>
