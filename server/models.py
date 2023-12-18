@@ -30,6 +30,10 @@ class User(db.Model, SerializerMixin):
         hashed_password = encrypted_password.decode('utf-8')
         self._password_hash = hashed_password
 
+    def authenticate(self, password_string):
+        byte_object = password_string.encode('utf-8')
+        return bcrypt.check_password_hash(self.password_hash, byte_object)
+
         def __repr__(self):
             return f'<User {self.name}>'
 
@@ -73,11 +77,11 @@ class Anime(db.Model, SerializerMixin):
             raise ValueError('Name must be at least 4 characters!')
         return new_name
 
-    @validates('num_episodes')
-    def check_num_episodes(self, key, new_num_episodes):
-        if new_num_episodes < 0:
-            raise ValueError('Number of episodes more than 0!')
-        return new_num_episodes
+    #@validates('num_episodes')
+    #def check_num_episodes(self, key, new_num_episodes):
+    #    if new_num_episodes < 0:
+    #        raise ValueError('Number of episodes more than 0!')
+    #    return new_num_episodes
 
     @validates('summary')
     def check_summary(self, key, new_summary):

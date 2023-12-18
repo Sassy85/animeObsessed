@@ -1,24 +1,35 @@
-import { Button, InputLabel, TextField } from '@mui/material';
+import { useState } from 'react'
+import { Box, Button, Container, TextField, Typography} from '@mui/material';
 import {useFormik} from 'formik'
 import * as yup from 'yup'
 
 function Signup({setUser}) {
 
+    const [signup, setSignup] = useState(true)
+
     const signupSchema = yup.object().shape({
-        username: yup.string().min(2, 'Username is too Short!').max(20, 'Username is too long!').required('Required!'),
-        email: yup.string().email('Invalid email!').required('Required!'),
-        password:yup.string().min(6, 'Username is too Short!').max(20, 'Username is too long!').required('Required!')
+        username: yup.string().min(2, 'Username is too Short!').max(20, 'Username is too long!').required('Username is Required!'),
+        email: yup.string().email('Valid Email is Required!').required(),
+        password: yup.string().min(5, 'Password is too Short!').max(20, 'Password is too long!').required('Password is Required!'), 
+        passwordConfirmation: yup.string().required('Confirm Password').oneOf([yup.ref('password')], 'Passwords must match!')
+    })
+
+    const loginSchema = yup.object().shape({
+        username: yup.string().required('Username Required'),
+        password: yup.string().required('Password Required')
     })
 
     const formik = useFormik( {
         initialValues: {
             username: '',
             email: '',
-            password: ''
+            password: '', 
+            passwordConfirmation: ''
         },
-        validationSchema: signupSchema,
+        validationSchema: signup ? signupSchema : loginSchema,
         onSubmit: ( values) => {
-            fetch('/users', {
+            const endpoint = signup ? '/users': '/login'
+            fetch(endpoint, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,42 +48,73 @@ function Signup({setUser}) {
         }
     })
 
+    function toggleSignup() {
+        setSignup((currentSignup) => !currentSignup)
+    }
+
     return (
         <div>
-            {/*{formik.errors}*/}
-            <form onSubmit={formik.handleSubmit}>
-                <InputLabel htmlFor="username"></InputLabel>
-                <TextField 
-                id="username" 
-                label="Username"
-                variant="outlined" 
-                required
-                value={formik.values.username}
-                onChange={formik.handleChange}
-                />
+            <Typography variant="h1" component="h2"><span>Anime Obsessed</span></Typography>
 
-                <InputLabel htmlFor="email"></InputLabel>                    <TextField 
-                id="email" 
-                label="Email"
-                variant="outlined" 
-                required
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                />
+            <Container maxWidth='sm'>
+                <Button onClick={toggleSignup}>{signup ? 'Login!': 'Create New Account'}</Button>
+                <form onSubmit={formik.handleSubmit}>
+                    
+                    <TextField 
+                    id="username" 
+                    label="Username"
+                    variant="outlined" 
+                    error={!!formik.errors.username}
+                    helperText={formik.errors.username}
+                    required
+                    value={formik.values.username}
+                    onChange={formik.handleChange}
+                    />
 
-                <InputLabel htmlFor="password"></InputLabel>
-                <TextField 
-                id="password" 
-                label="Password"
-                type='password'
-                variant="outlined" 
-                required
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                />
+                    <Box>
+                        {signup && <TextField
+                            id='email'
+                            label='Email'
+                            variant='outlined'
+                            error={!!formik.errors.email}
+                            helperText={formik.errors.email}
+                            required
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                        />}
+                    </Box>
 
-                <Button variant='contained' type='submit'>Submit</Button>
-            </form>
+                    <Box>
+                        <TextField 
+                            id="password" 
+                            label="Password"
+                            type='password'
+                            variant="outlined" 
+                            error={!!formik.errors.password}
+                            helperText={formik.errors.password}
+                            required
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                        />
+                    </Box>
+
+                    <Box>
+                        {signup && <TextField 
+                            id="passwordConfirmation" 
+                            label="Confirm Password"
+                            type='password'
+                            variant="outlined" 
+                            error={!!formik.errors.passwordConfirmation}
+                            helperText={formik.errors.passwordConfirmation}
+                            required
+                            value={formik.values.passwordConfirmation}
+                            onChange={formik.handleChange}
+                    />}
+                    </Box>
+
+                    <Button variant='contained' type='submit'>Submit</Button>
+                </form>
+            </Container>
         </div>
     )
 }

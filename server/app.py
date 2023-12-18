@@ -19,16 +19,44 @@ class Users(Resource):
         user = User(username = params['username'], email = params['email'], password_hash = params['password'])
         db.session.add(user)
         db.session.commit()
+        session['user_id'] = user.id
         return make_response({'user': user.to_dict()}, 201)
 
 api.add_resource(Users, '/api/v1/users')
+
+@app.route('/api/v1/authorized')
+def authorized():
+    try:
+        #same as query.get(id)
+        user = User.query.filter_by(id=session.get('user_id')).first()
+        return make_response(user.to_dict(), 200)
+    except:
+        return make_response({"Error": "User not found"}, 404)
+
+@app.route('/api/v1/logout', methods=['DELETE'])
+def logout():
+    session['user_id'] = None
+    return make_response("", 204)
+
+@app.route('/api/v1/login', methods=['POST'])
+def login():
+    params = request.json
+    try:
+        user = User.query.filter_by(username=params['username']).first()
+        if user.authenticate(params['password']):
+            session['user_id'] = user.id
+            return make_response({'user': user.to_dict()}, 200)
+        else:
+            return make_response({'Error': 'Password Incorrect'}, 401)
+    except:
+            return make_response({'Error': 'Username Incorrect'}, 401)
 
 class Streams(Resource):
     def get(self):
         all_streams = [s.to_dict() for s in Stream.query.all()]
         return make_response(all_streams, 200)
 
-api.add_resource(Streams, '/streams')
+api.add_resource(Streams, '/api/v1/streams')
 
 class Animes(Resource):
     def get(self):
@@ -45,7 +73,7 @@ class Animes(Resource):
         db.session.commit()
         return make_response(anime.to_dict(), 201)
 
-api.add_resource(Animes, '/animes')
+api.add_resource(Animes, '/api/v1/animes')
 
 class AnimesById(Resource):
     def get(self, id):
@@ -75,7 +103,7 @@ class AnimesById(Resource):
         db.session.commit()
         return make_response(anime.to_dict(), 200)
 
-api.add_resource(AnimesById, '/animes/<int:id>')
+api.add_resource(AnimesById, '/api/v1/animes/<int:id>')
 
 class AnimesInStream(Resource):
     def get(self, id):
@@ -86,14 +114,17 @@ class AnimesInStream(Resource):
         anime_shows = [a.to_dict() for a in animes_in_stream]
         return make_response(anime_shows, 200)
 
-api.add_resource(AnimesInStream, '/streams/<int:id>/animes')
-
-
-
+api.add_resource(AnimesInStream, '/api/v1/streams/<int:id>/animes')
 
 @app.route('/')
 def index():
     return '<h1>Project Server</h1>'
+
+#@app.before_request
+#def check_logged_id():
+#    if request.endpoint in ['streams', 'animes'] and not session.get('user_id'):
+#        return make_response({'Error': 'Unauthorized, please login!'}, 401)
+    
 
 
 if __name__ == '__main__':
