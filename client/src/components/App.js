@@ -44,6 +44,13 @@ function App() {
     setAnimes((currentStateAnimes) => [newAnime, ...currentStateAnimes])
   }
 
+  function onRemoveAnime(animeId) {
+    console.log(animeId)
+    setAnimes((currentsAnimes) => {
+      return currentsAnimes.filter((anime) =>anime.id !== animeId)
+    })
+  }
+
   return <div>
     <Nav/>
     
@@ -51,7 +58,7 @@ function App() {
 
     <StreamContainer/>
     
-    <AnimeConainter animes={animes} setAnimes={setAnimes}/>
+    <AnimeConainter animes={animes} setAnimes={setAnimes} onRemoveAnime={onRemoveAnime}/>
 
     <AddAnime onNewAnime={onNewAnime}/>
   </div>

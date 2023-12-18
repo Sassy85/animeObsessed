@@ -3,7 +3,7 @@ import {Container} from "@mui/material"
 
 import AnimeCard from './AnimeCard'
 
-function AnimeContainer({animes, setAnimes}) {
+function AnimeContainer({animes, setAnimes, onRemoveAnime}) {
     useEffect(() => {
         fetch('/animes')
             .then((r) => {
@@ -17,7 +17,7 @@ function AnimeContainer({animes, setAnimes}) {
     return (
         <div>
             <Container>
-            {animes.map(anime => <AnimeCard  key={anime.id} anime={anime}  />)}
+            {animes.map(anime => <AnimeCard  key={anime.id} anime={anime} onRemoveAnime={onRemoveAnime}/>)}
             </Container>
         </div>
     )
