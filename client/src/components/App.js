@@ -45,9 +45,20 @@ function App() {
   }
 
   function onRemoveAnime(animeId) {
-    console.log(animeId)
     setAnimes((currentsAnimes) => {
       return currentsAnimes.filter((anime) =>anime.id !== animeId)
+    })
+  }
+
+  function onUpdateAnime(updatedAnime) {
+    setAnimes((currentsAnimes) => {
+      return currentsAnimes.map((anime) => {
+        if (anime.id === updatedAnime.id) {
+          return updatedAnime
+        } else {
+          return anime
+        }
+      })
     })
   }
 
@@ -58,7 +69,7 @@ function App() {
 
     <StreamContainer/>
     
-    <AnimeConainter animes={animes} setAnimes={setAnimes} onRemoveAnime={onRemoveAnime}/>
+    <AnimeConainter animes={animes} setAnimes={setAnimes} onRemoveAnime={onRemoveAnime} onUpdateAnime={onUpdateAnime}/>
 
     <AddAnime onNewAnime={onNewAnime}/>
   </div>

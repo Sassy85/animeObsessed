@@ -1,11 +1,10 @@
 import {Button, Card} from '@mui/material'
 
-function AnimeCard({anime, onRemoveAnime}) {
+function AnimeCard({anime, onRemoveAnime, onUpdateAnime}) {
     const {completed, id, image, likes, name, num_episodes, summary} = anime
 
     function handleDelete() {
-        //make request to the "/animes/:id"
-        fetch (`/animes/${id}`, {
+        fetch(`/animes/${id}`, {
             method: "DELETE"
         })
         .then((r) => {
@@ -13,6 +12,18 @@ function AnimeCard({anime, onRemoveAnime}) {
                 onRemoveAnime(id)
             }
         })
+    }
+
+    function handleUpdate() {
+        fetch(`/animes/${id}`, {
+            method: "PATCH", 
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body:JSON.stringify({likes: likes + 1})
+        })
+        .then((r) => r.json())
+        .then((updatedAnime) => onUpdateAnime(updatedAnime))
     }
 
     return (
@@ -27,11 +38,9 @@ function AnimeCard({anime, onRemoveAnime}) {
                         completed ? 'Completed' : 'Still Going'
                     }
                 </p>
-                <p>Likes {likes}</p>
+                <Button variant="contained" onClick={handleUpdate}>🌟🌟 {likes}</Button>
 
-                <Button  variant="contained" onClick={handleDelete}>☠️☠️</Button>
-
-                <Button  variant="contained">✏️</Button>
+                <Button variant="contained" onClick={handleDelete}>☠️☠️</Button>
             </div>
         </Card>
     )
