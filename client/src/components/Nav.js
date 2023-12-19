@@ -1,13 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import React, {useState} from 'react'
-import {Typography } from "@mui/material";
+import React from 'react'
 
 
 
 function Nav() {
     return(
         <header>
-            <Typography className='title' variant="h1" component="h2">Anime Obsessed</Typography>
+            <header className='title' variant="h1" component="h2">Anime Obsessed</header>
             <nav>
                 <NavLink to='/animes' end className="nav-link">Animes</NavLink>
                 <NavLink to='/streams' className="nav-link">Streams</NavLink>

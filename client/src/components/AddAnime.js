@@ -141,7 +141,7 @@ function AddAnime() {
                         />
                     </Box>
 
-                    <Button variant="contained" type="submit">Submit</Button>
+                    <button variant="contained" type="submit">Submit</button>
                 </form>
             </Container>
         </div>

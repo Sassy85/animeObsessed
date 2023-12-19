@@ -1,16 +1,29 @@
+@import url('https://fonts.cdnfonts.com/css/lemon-tuesday');
+
+
 :root {
   --bg: #282c34;
   --header: #fff;
   --link: #61dafb;
   --text: hsla(0, 0%, 100%, 0.88);
+  --font-lemon-tuesday: 'Lemon Tuesday', sans-serif;
+}
+
+body {
+  background-image: url('https://static.vecteezy.com/system/resources/thumbnails/000/598/528/small/blue4-01__Converted_-02-021.jpg');
+  background-size: cover;
 }
 
 .streamsImg {
-  max-width: 25%; 
+  display: block;
+  margin: 0 auto;
+  max-width: 30%; 
   height:auto
 }
 
 .animeImg {
+  display: block;
+  margin: 0 auto;
   max-width: 30%;
   height: auto;
 }
@@ -22,9 +35,63 @@
   padding: 5px;
   text-decoration: none;
   text-align: center;
-  font-size: min(10vw, 15px);
+  font-size: 25px;
+  font-weight: bold;
+  font-family: var(--font-lemon-tuesday);
+  
+  color: #9505E3;
 }
 
 .active{
   color: #138B83;
+}
+
+.title {
+  color: #7E1E80;
+  font-family: var(--font-lemon-tuesday);
+  text-align: center;
+  font-size: 100px;
+}
+
+button {
+  font-family: var(--font-lemon-tuesday);
+  color: #3d393B;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #00EAD9;
+  border-radius: 8px;
+  border: 2px solid #138D83;
+}
+
+button:hover {
+  background-color: #b637fb;
+  border: 2px solid #7E1E80;
+}
+
+.logout {
+  float: right;
+}
+
+h2 {
+  color: #7E1E80;
+  font-family: var(--font-lemon-tuesday);
+  font-size: 40px;
+  text-align: center;
+}
+
+h3 {
+  color: #7E1E80;
+  font-family: var(--font-lemon-tuesday);
+  font-size: 40px;
+}
+
+p {
+  font-size: 18px;
+  color: #9505E3;
+  background-color: #3d393B;
+}
+
+.main {
+  display: block;
+  margin: 0 auto;
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {Container} from "@mui/material"
+import { Grid } from "semantic-ui-react";
 import { useOutletContext } from "react-router-dom";
 
 import AnimeCard from './AnimeCard'

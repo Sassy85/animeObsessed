@@ -1,4 +1,4 @@
-import {Button, Card} from '@mui/material'
+import {Card} from '@mui/material'
 
 function AnimeCard({anime, onRemoveAnime, onUpdateAnime}) {
     const {completed, id, image, likes, name, num_episodes, summary} = anime
@@ -27,7 +27,7 @@ function AnimeCard({anime, onRemoveAnime, onUpdateAnime}) {
     }
 
     return (
-        <Card id={id}>
+        <card id={id}>
             <div>
                 <h2>{name}</h2>
                 <img src={image} alt={name} className='animeImg'/>
@@ -38,11 +38,11 @@ function AnimeCard({anime, onRemoveAnime, onUpdateAnime}) {
                         completed ? 'Completed' : 'Still Going'
                     }
                 </p>
-                <Button variant="contained" onClick={handleUpdate}>🌟🌟 {likes}</Button>
+                <button variant="contained" onClick={handleUpdate}>🌟🌟 {likes}</button>
 
-                <Button variant="contained" onClick={handleDelete}>☠️☠️</Button>
+                <button variant="contained" onClick={handleDelete}>☠️☠️</button>
             </div>
-        </Card>
+        </card>
     )
 }
 

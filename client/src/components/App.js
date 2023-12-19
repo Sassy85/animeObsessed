@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {Button,} from '@mui/material'
 import {Outlet} from "react-router-dom";
 
 import AnimeConainter from './AnimeContainer'
@@ -72,7 +71,7 @@ function App() {
   return <div>
     <Nav/>
     
-    <Button variant="contained" onClick={handleLogout}>Logout</Button>
+    <button className='logout' onClick={handleLogout}>Logout</button>
 
     {/* <StreamContainer/>
     

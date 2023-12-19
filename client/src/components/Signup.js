@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, Container, TextField, Typography} from '@mui/material';
+import { Box, Container, TextField, Typography} from '@mui/material';
 import {useFormik} from 'formik'
 import * as yup from 'yup'
 
@@ -54,10 +54,10 @@ function Signup({setUser}) {
 
     return (
         <div>
-            <Typography variant="h1" component="h2"><span>Anime Obsessed</span></Typography>
+            <header className="title"><span>Anime Obsessed</span></header>
 
             <Container maxWidth='sm'>
-                <Button onClick={toggleSignup}>{signup ? 'Login!': 'Create New Account'}</Button>
+                <button onClick={toggleSignup}>{signup ? 'Login!': 'Create New Account'}</button>
                 <form onSubmit={formik.handleSubmit}>
                     
                     <TextField 
@@ -112,7 +112,7 @@ function Signup({setUser}) {
                     />}
                     </Box>
 
-                    <Button variant='contained' type='submit'>Submit</Button>
+                    <button variant='contained' type='submit'>Submit</button>
                 </form>
             </Container>
         </div>

@@ -120,10 +120,10 @@ api.add_resource(AnimesInStream, '/api/v1/streams/<int:id>/animes')
 def index():
     return '<h1>Project Server</h1>'
 
-#@app.before_request
-#def check_logged_id():
-#    if request.endpoint in ['streams', 'animes'] and not session.get('user_id'):
-#        return make_response({'Error': 'Unauthorized, please login!'}, 401)
+@app.before_request
+def check_logged_id():
+    if request.endpoint in ['streams', 'animes'] and not session.get('user_id'):
+        return make_response({'Error': 'Unauthorized, please login!'}, 401)
     
 
 
