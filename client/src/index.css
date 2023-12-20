@@ -10,7 +10,7 @@
 }
 
 body {
-  background-image: url('https://static.vecteezy.com/system/resources/thumbnails/000/598/528/small/blue4-01__Converted_-02-021.jpg');
+  background-image: url('https://media.istockphoto.com/id/1348203336/vector/japanese-landscape-on-light-background.jpg?s=612x612&w=0&k=20&c=h2Ik78_diw5jmHDESDvjTJL8OpoIJoajv8-xd_G2D7Q=');
   background-size: cover;
 }
 
@@ -35,7 +35,7 @@ body {
   padding: 5px;
   text-decoration: none;
   text-align: center;
-  font-size: 25px;
+  font-size: 40px;
   font-weight: bold;
   font-family: var(--font-lemon-tuesday);
   
@@ -50,14 +50,14 @@ body {
   color: #7E1E80;
   font-family: var(--font-lemon-tuesday);
   text-align: center;
-  font-size: 100px;
+  font-size: 150px;
 }
 
 button {
   font-family: var(--font-lemon-tuesday);
   color: #3d393B;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
   background-color: #00EAD9;
   border-radius: 8px;
   border: 2px solid #138D83;
@@ -75,20 +75,19 @@ button:hover {
 h2 {
   color: #7E1E80;
   font-family: var(--font-lemon-tuesday);
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
 }
 
 h3 {
   color: #7E1E80;
   font-family: var(--font-lemon-tuesday);
-  font-size: 40px;
+  font-size: 30px;
 }
 
 p {
   font-size: 18px;
   color: #9505E3;
-  background-color: #3d393B;
 }
 
 .main {

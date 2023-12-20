@@ -22,7 +22,7 @@ with app.app_context():
 
     print('Creating streams...')
 
-    s1 = Stream(name='Crunchyroll', image='https://image.roku.com/developer_channels/prod/413146628c55392af8378cf9e9885bcacbe9ae4509647db88dbfaf0017e86739.png')
+    s1 = Stream(name='Crunchyroll', image='https://m.media-amazon.com/images/I/417bVUqe0pL.png')
 
     s2 = Stream(name='Hulu', image='https://reviewed-com-res.cloudinary.com/image/fetch/s--xT7E_lQY--/b_white,c_fill,cs_srgb,f_auto,fl_progressive.strip_profile,g_auto,h_972,q_auto,w_972/https://reviewed-production.s3.amazonaws.com/1591287416567/Hulu_Logo.jpg')
 

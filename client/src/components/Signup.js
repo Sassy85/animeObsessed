@@ -64,6 +64,7 @@ function Signup({setUser}) {
                     id="username" 
                     label="Username"
                     variant="outlined" 
+                    margin="normal"
                     error={!!formik.errors.username}
                     helperText={formik.errors.username}
                     required
@@ -76,6 +77,7 @@ function Signup({setUser}) {
                             id='email'
                             label='Email'
                             variant='outlined'
+                            margin="normal"
                             error={!!formik.errors.email}
                             helperText={formik.errors.email}
                             required
@@ -90,6 +92,7 @@ function Signup({setUser}) {
                             label="Password"
                             type='password'
                             variant="outlined" 
+                            margin="normal"
                             error={!!formik.errors.password}
                             helperText={formik.errors.password}
                             required
@@ -104,6 +107,7 @@ function Signup({setUser}) {
                             label="Confirm Password"
                             type='password'
                             variant="outlined" 
+                            margin="normal"
                             error={!!formik.errors.passwordConfirmation}
                             helperText={formik.errors.passwordConfirmation}
                             required

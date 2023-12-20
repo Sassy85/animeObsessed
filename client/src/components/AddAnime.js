@@ -80,6 +80,7 @@ function AddAnime() {
                         id="name"
                         label='Name'
                         variant="outlined"
+                        margin="normal"
                         required
                         value={name}
                         onChange={nameChange}
@@ -91,6 +92,7 @@ function AddAnime() {
                         id="image"
                         label='Image'
                         variant="outlined"
+                        margin="normal"
                         required
                         value={image}
                         onChange={imageChange}
@@ -102,6 +104,7 @@ function AddAnime() {
                         id="summary"
                         label='Summary'
                         variant="outlined"
+                        margin="normal"
                         required
                         value={summary}
                         onChange={summaryChange}
@@ -113,6 +116,7 @@ function AddAnime() {
                         id="num_episodes"
                         label='Number of episodes'
                         variant="outlined"
+                        margin="normal"
                         required
                         value={numEpisodes}
                         onChange={numEpisodesChange}
@@ -124,6 +128,7 @@ function AddAnime() {
                         id="completed"
                         label='Completed or Still Going?'
                         variant="outlined"
+                        margin="normal"
                         required
                         value={completed}
                         onChange={completedChange}
@@ -135,6 +140,7 @@ function AddAnime() {
                         id="likes"
                         label='Number of likes'
                         variant="outlined"
+                        margin="normal"
                         required
                         value={likes}
                         onChange={likesChange}
