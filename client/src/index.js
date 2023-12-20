@@ -14,7 +14,11 @@ const routes = [
         path: "/", 
         element: <App/>, 
         children: [
-            {index: true, element: <MainPage/>},
+            {
+                index: true,
+                path: "/home", 
+                element: <MainPage/>
+            },
             {
                 path: "/animes", 
                 element: <AnimeContainer/>,

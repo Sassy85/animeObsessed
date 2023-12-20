@@ -94,3 +94,15 @@ p {
   display: block;
   margin: 0 auto;
 }
+
+.addAnime {
+  float: right;
+  max-width: 30%;
+  height: auto;
+}
+
+.newUser {
+  float: right;
+  max-width: 30%;
+  height: auto;
+}

@@ -65,7 +65,7 @@ class Anime(db.Model, SerializerMixin):
     image = db.Column(db.String)
     num_episodes = db.Column(db.Integer)
     summary = db.Column(db.String)
-    completed= db.Column(db.String)
+    stream= db.Column(db.String)
     likes = db.Column(db.Integer)
 
     platforms = db.relationship('Platform', back_populates = 'anime', cascade = 'all, delete-orphan')

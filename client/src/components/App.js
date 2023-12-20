@@ -40,7 +40,7 @@ function App() {
   }
 
   function onNewAnime(newAnime) {
-    setAnimes((currentStateAnimes) => [newAnime, ...currentStateAnimes])
+    setAnimes((currentStateAnimes) => [ ...currentStateAnimes, newAnime])
   }
 
   function onRemoveAnime(animeId) {

@@ -1,8 +1,8 @@
-"""created streams, animes, and platforms table and foreign keys
+"""all tables
 
-Revision ID: 273674f1e04f
+Revision ID: b6e2c54f34af
 Revises: 26b19dbaabb2
-Create Date: 2023-12-07 15:47:05.773545
+Create Date: 2023-12-20 11:43:55.199933
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '273674f1e04f'
+revision = 'b6e2c54f34af'
 down_revision = '26b19dbaabb2'
 branch_labels = None
 depends_on = None
@@ -24,7 +24,7 @@ def upgrade():
     sa.Column('image', sa.String(), nullable=True),
     sa.Column('num_episodes', sa.Integer(), nullable=True),
     sa.Column('summary', sa.String(), nullable=True),
-    sa.Column('completed', sa.String(), nullable=True),
+    sa.Column('stream', sa.String(), nullable=True),
     sa.Column('likes', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )

@@ -55,6 +55,7 @@ function Signup({setUser}) {
     return (
         <div>
             <header className="title"><span>Anime Obsessed</span></header>
+            <img src='https://i.pinimg.com/736x/47/c4/5c/47c45c58bc10e41d6408fe91b791cfb8.jpg' alt='Ichigo from Bleach' className='newUser'/>
 
             <Container maxWidth='sm'>
                 <button onClick={toggleSignup}>{signup ? 'Login!': 'Create New Account'}</button>

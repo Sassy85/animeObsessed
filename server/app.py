@@ -66,7 +66,7 @@ class Animes(Resource):
     def post(self):
         params = request.json
         try:
-            anime = Anime(name = params['name'], image = params['image'], num_episodes = params['num_episodes'], summary = params['summary'], completed = params['completed'], likes = params['likes'])
+            anime = Anime(name = params['name'], image = params['image'], num_episodes = params['num_episodes'], summary = params['summary'], stream = params['stream'], likes = params['likes'])
         except ValueError as v_error:
             return make_response({"Errors": [str(v_error)]}, 422)
         db.session.add(anime)
