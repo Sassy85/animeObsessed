@@ -15,7 +15,6 @@ const routes = [
         element: <App/>, 
         children: [
             {
-                index: true,
                 path: "/home", 
                 element: <MainPage/>
             },

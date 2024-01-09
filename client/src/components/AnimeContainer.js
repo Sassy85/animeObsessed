@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import {Container} from "@mui/material"
-import { Grid } from "semantic-ui-react";
+import {Box, Container, TextField} from "@mui/material"
 import { useOutletContext } from "react-router-dom";
 
 import AnimeCard from './AnimeCard'
 
 function AnimeContainer() {
     const {animes, setAnimes, onRemoveAnime, onUpdateAnime} = useOutletContext()
+
+    const [search, setSearch] = useState("")
     
     useEffect(() => {
         fetch('/animes')
@@ -18,10 +19,29 @@ function AnimeContainer() {
                 }
             })
     }, [])
+    function handleSearchChange(event) {
+        setSearch(event.target.value)
+    }
+    const filteredAnimes = animes.filter((anime) => {
+        const lowerCaseAnimeName = anime.name.toLowerCase()
+        const lowerCaseSearch = search.toLowerCase()
+        
+        return lowerCaseAnimeName.includes(lowerCaseSearch)
+    })
+
     return (
         <div>
+            <Box>
+                <TextField
+                id="search"
+                label='Search...'
+                variant="outlined"
+                margin="normal"
+                onChange={handleSearchChange}
+                />
+            </Box>
             <Container>
-            {animes.map(anime => <AnimeCard key={anime.id} anime={anime} onRemoveAnime={onRemoveAnime} onUpdateAnime={onUpdateAnime}/>)}
+            {filteredAnimes.map(anime => <AnimeCard key={anime.id} anime={anime} onRemoveAnime={onRemoveAnime} onUpdateAnime={onUpdateAnime}/>)}
             </Container>
         </div>
     )
